@@ -19,7 +19,56 @@ const SubjectLineAnalyzer: React.FC = () => {
     let score = 50;
     const feedback: string[] = [];
 
-    // ... (rest of the analysis logic remains the same)
+    // Length check
+    if (subjectLine.length < 20) {
+      score -= 10;
+      feedback.push('Subject line is too short. Aim for 20-60 characters.');
+    } else if (subjectLine.length > 60) {
+      score -= 10;
+      feedback.push('Subject line is too long. Keep it under 60 characters.');
+    } else {
+      score += 10;
+      feedback.push('Good length!');
+    }
+
+    // Check for common words
+    const usedCommonWords = commonWords.filter(word => subjectLine.toLowerCase().includes(word));
+    if (usedCommonWords.length > 0) {
+      score += 5;
+      feedback.push(`Good use of engaging words: ${usedCommonWords.join(', ')}`);
+    } else {
+      score -= 5;
+      feedback.push('Consider using some engaging words to increase open rates.');
+    }
+
+    // Check for spam trigger words
+    const usedSpamWords = spamTriggerWords.filter(word => subjectLine.toLowerCase().includes(word));
+    if (usedSpamWords.length > 0) {
+      score -= 20;
+      feedback.push(`Avoid spam trigger words: ${usedSpamWords.join(', ')}`);
+    }
+
+    // Capitalization check
+    if (subjectLine === subjectLine.toUpperCase()) {
+      score -= 10;
+      feedback.push('Avoid using all caps as it may trigger spam filters.');
+    }
+
+    // Special character check
+    const specialChars = subjectLine.match(/[^a-zA-Z0-9\s]/g) || [];
+    if (specialChars.length > 2) {
+      score -= 5;
+      feedback.push('Too many special characters may trigger spam filters.');
+    }
+
+    // Personalization check
+    if (subjectLine.toLowerCase().includes('{name}') || subjectLine.toLowerCase().includes('{company}')) {
+      score += 10;
+      feedback.push('Good use of personalization!');
+    }
+
+    // Final score adjustments
+    score = Math.max(0, Math.min(100, score));
 
     setAnalysis({ score, feedback });
   };
