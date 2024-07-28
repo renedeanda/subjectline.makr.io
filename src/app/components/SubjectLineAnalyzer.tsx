@@ -193,7 +193,7 @@ const SubjectLineAnalyzer: React.FC = () => {
               onChange={(e) => setSubjectLine(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && analyzeSubjectLine()}
               placeholder="Enter your email subject line"
-              className="w-full p-3 sm:p-4 pr-12 text-base sm:text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300"
+              className="w-full p-3 sm:p-4 pr-12 text-base sm:text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300 text-gray-700 dark:text-gray-300"
               disabled={isAnalyzing}
             />
             <button
@@ -254,7 +254,7 @@ const SubjectLineAnalyzer: React.FC = () => {
               {analysis.score < 70 && (
                 <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-blue-800 mb-2">To improve your subject line:</h3>
-                  <ul className="list-disc pl-5 space-y-1">
+                  <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
                     <li>Aim for 30-60 characters</li>
                     <li>Use urgency words like "limited" or "exclusive" if appropriate</li>
                     <li>Include a clear call to action</li>
@@ -283,7 +283,7 @@ const SubjectLineAnalyzer: React.FC = () => {
                 {pastAnalyses.map((pastAnalysis) => (
                   <li key={pastAnalysis.id} className="bg-white p-3 sm:p-4 rounded-lg shadow flex justify-between items-center">
                     <div className="overflow-hidden">
-                      <p className="font-semibold text-sm sm:text-base truncate">{pastAnalysis.subjectLine}</p>
+                      <p className="font-semibold text-sm sm:text-base truncate text-gray-700 dark:text-gray-300">{pastAnalysis.subjectLine}</p>
                       <p className="text-xs sm:text-sm text-gray-500">Score: {pastAnalysis.score}</p>
                     </div>
                     <button
