@@ -1,4 +1,16 @@
+import os
 
+def create_or_update_file(path, content):
+    print(f"Updating file: {path}")
+    directory = os.path.dirname(path)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
+    with open(path, 'w') as f:
+        f.write(content)
+
+def main():
+    # Update SubjectLineAnalyzer.tsx
+    subject_line_analyzer_content = """
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -141,17 +153,17 @@ const SubjectLineAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-green-500 w-full">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-green-500 flex flex-col">
       <div className="bg-blue-600 text-white p-4 text-center">
         <p className="text-lg">Check out 📚 <a href="https://rede.io" className="underline">Rede.io</a> for your daily tech newsletter!</p>
       </div>
       <div className="flex-grow flex items-center justify-center p-4">
-        <div className="max-w-4xl mx-auto w-full bg-white rounded-lg shadow-xl overflow-hidden">
+        <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden">
           <div className="p-6 bg-gradient-to-r from-blue-600 to-green-600">
             <h1 className="text-4xl font-bold text-white font-iowan">Email Subject Line Analyzer</h1>
             <p className="text-xl text-blue-100 mt-2">Optimize your email campaigns with AI-powered analysis</p>
           </div>
-
+          
           <div className="p-6">
             <div className="mb-6 relative">
               <input
@@ -240,3 +252,82 @@ const SubjectLineAnalyzer: React.FC = () => {
 };
 
 export default SubjectLineAnalyzer;
+"""
+    create_or_update_file("src/app/components/SubjectLineAnalyzer.tsx", subject_line_analyzer_content)
+
+    # Update layout.tsx
+    layout_content = """
+import React from 'react';
+import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
+import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata = {
+  title: 'Email Subject Line Analyzer | Boost Your Open Rates',
+  description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+  keywords: 'email marketing, subject line analyzer, open rates, email engagement',
+  openGraph: {
+    title: 'Email Subject Line Analyzer | Boost Your Open Rates',
+    description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+    url: 'https://subject-line-analyzer.makr.io',
+    siteName: 'Email Subject Line Analyzer',
+    images: [
+      {
+        url: 'https://subject-line-analyzer.makr.io/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Email Subject Line Analyzer | Boost Your Open Rates',
+    description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+    images: ['https://subject-line-analyzer.makr.io/og-image.png'],
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link href="https://fonts.googleapis.com/css2?family=Iowan+Old+Style&display=swap" rel="stylesheet" />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
+      </head>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+}
+"""
+    create_or_update_file("src/app/layout.tsx", layout_content)
+
+    print("Project files have been updated successfully!")
+    print("To run the project:")
+    print("1. Ensure you have all required dependencies installed:")
+    print("   npm install")
+    print("2. Start the development server:")
+    print("   npm run dev")
+    print("3. Open your browser and navigate to http://localhost:3000")
+
+if __name__ == "__main__":
+    main()
