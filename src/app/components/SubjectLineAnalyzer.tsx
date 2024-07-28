@@ -281,10 +281,10 @@ const SubjectLineAnalyzer: React.FC = () => {
               </div>
               <ul className="space-y-3">
                 {pastAnalyses.map((pastAnalysis) => (
-                  <li key={pastAnalysis.id} className="bg-white dark:bg-gray-700 p-3 sm:p-4 rounded-lg shadow flex flex-col sm:flex-row sm:items-center">
+                  <li key={pastAnalysis.id} className="bg-white p-3 sm:p-4 rounded-lg shadow flex flex-col sm:flex-row sm:items-center">
                     <div className="flex-grow mr-2 mb-2 sm:mb-0">
-                      <p className="font-semibold text-sm sm:text-base text-gray-800 dark:text-gray-200 break-words">{pastAnalysis.subjectLine}</p>
-                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Score: {pastAnalysis.score}</p>
+                      <p className="font-semibold text-sm sm:text-base text-gray-800 break-words">{pastAnalysis.subjectLine}</p>
+                      <p className="text-xs sm:text-sm text-gray-500">Score: {pastAnalysis.score}</p>
                     </div>
                     <button
                       onClick={() => deleteAnalysis(pastAnalysis.id)}
