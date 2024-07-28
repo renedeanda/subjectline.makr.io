@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Email Subject Line Analyzer | Boost Your Open Rates',
-  description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+  description: 'Improve your email marketing with our subject line analyzer. Get instant feedback to increase open rates and engagement.',
   keywords: 'email marketing, subject line analyzer, open rates, email engagement',
   openGraph: {
     title: 'Email Subject Line Analyzer | Boost Your Open Rates',
-    description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+    description: 'Improve your email marketing with our subject line analyzer. Get instant feedback to increase open rates and engagement.',
     url: 'https://subject-line-analyzer.makr.io',
     siteName: 'Email Subject Line Analyzer',
     images: [
@@ -29,7 +29,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Email Subject Line Analyzer | Boost Your Open Rates',
-    description: 'Improve your email marketing with our AI-powered subject line analyzer. Get instant feedback to increase open rates and engagement.',
+    description: 'Improve your email marketing with our subject line analyzer. Get instant feedback to increase open rates and engagement.',
     images: ['https://subject-line-analyzer.makr.io/og-image.png'],
   },
 };
