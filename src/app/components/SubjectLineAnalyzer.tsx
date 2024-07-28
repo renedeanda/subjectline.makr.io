@@ -269,7 +269,7 @@ const SubjectLineAnalyzer: React.FC = () => {
           {pastAnalyses.length > 0 && (
             <div className="mt-8">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 font-iowan">Past Analyses</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 font-iowan">Past Analyses</h2>
                 <button
                   onClick={clearAllAnalyses}
                   className="text-red-500 hover:text-red-700 flex items-center"
@@ -281,14 +281,14 @@ const SubjectLineAnalyzer: React.FC = () => {
               </div>
               <ul className="space-y-3">
                 {pastAnalyses.map((pastAnalysis) => (
-                  <li key={pastAnalysis.id} className="bg-white p-3 sm:p-4 rounded-lg shadow flex justify-between items-center">
-                    <div className="overflow-hidden">
-                      <p className="font-semibold text-sm sm:text-base truncate text-gray-700 dark:text-gray-700">{pastAnalysis.subjectLine}</p>
-                      <p className="text-xs sm:text-sm text-gray-500">Score: {pastAnalysis.score}</p>
+                  <li key={pastAnalysis.id} className="bg-white dark:bg-gray-700 p-3 sm:p-4 rounded-lg shadow flex flex-col sm:flex-row sm:items-center">
+                    <div className="flex-grow mr-2 mb-2 sm:mb-0">
+                      <p className="font-semibold text-sm sm:text-base text-gray-800 dark:text-gray-200 break-words">{pastAnalysis.subjectLine}</p>
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Score: {pastAnalysis.score}</p>
                     </div>
                     <button
                       onClick={() => deleteAnalysis(pastAnalysis.id)}
-                      className="text-red-500 hover:text-red-700 ml-2"
+                      className="text-red-500 hover:text-red-700 self-end sm:self-auto"
                       aria-label={`Delete analysis for "${pastAnalysis.subjectLine}"`}
                     >
                       <Trash2 size={18} />
