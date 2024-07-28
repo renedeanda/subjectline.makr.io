@@ -10,7 +10,7 @@ export default function Home() {
         <p className="text-lg">Check out 📚 Rede.io for your daily tech newsletter!</p>
       </Link>
 
-      <main className="flex-grow">
+      <main className="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8">
         <SubjectLineAnalyzer />
       </main>
 
