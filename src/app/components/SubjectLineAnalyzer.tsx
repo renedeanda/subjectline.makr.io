@@ -219,20 +219,37 @@ const SubjectLineAnalyzer: React.FC = () => {
                 </div>
               </div>
               <ul className="space-y-3">
-                {analysis.feedback.map((item, index) => (
-                  <li key={index} className="flex items-center bg-white p-3 rounded-lg shadow">
-                    <span className="mr-3 flex-shrink-0 text-xl">
-                      {item.startsWith('Good') || item.includes('piques curiosity') || item.includes('creates a sense of urgency') ? (
-                        <span className="text-green-500">✅</span>
-                      ) : item.includes('Consider') || item.toLowerCase().includes('caution') || item.toLowerCase().includes('avoid') ? (
-                        <span className="text-yellow-500">⚠️</span>
-                      ) : (
-                        <span className="text-blue-500">ℹ️</span>
-                      )}
-                    </span>
-                    <span className="text-sm sm:text-base text-gray-700 flex-grow">{item}</span>
-                  </li>
-                ))}
+                {analysis.feedback.map((item, index) => {
+                  let emoji = '📝'; // Default emoji
+                  let colorClass = 'text-blue-500'; // Default color
+
+                  if (item.toLowerCase().includes('good') ||
+                    item.toLowerCase().includes('effective') ||
+                    item.toLowerCase().includes('optimal')) {
+                    emoji = '✅';
+                    colorClass = 'text-green-500';
+                  } else if (item.toLowerCase().includes('consider') ||
+                    item.toLowerCase().includes('try') ||
+                    item.toLowerCase().includes('could')) {
+                    emoji = '💡';
+                    colorClass = 'text-yellow-500';
+                  } else if (item.toLowerCase().includes('caution') ||
+                    item.toLowerCase().includes('avoid') ||
+                    item.toLowerCase().includes('too long') ||
+                    item.toLowerCase().includes('too short')) {
+                    emoji = '⚠️';
+                    colorClass = 'text-orange-500';
+                  }
+
+                  return (
+                    <li key={index} className="flex items-center bg-white p-3 rounded-lg shadow">
+                      <span className={`mr-3 flex-shrink-0 text-xl ${colorClass}`}>
+                        {emoji}
+                      </span>
+                      <span className="text-sm sm:text-base text-gray-700 flex-grow">{item}</span>
+                    </li>
+                  );
+                })}
               </ul>
               {analysis.score < 70 && (
                 <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
