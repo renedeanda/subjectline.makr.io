@@ -269,7 +269,7 @@ const SubjectLineAnalyzer: React.FC = () => {
           {pastAnalyses.length > 0 && (
             <div className="mt-8">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 font-iowan">Past Analyses</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 font-iowan">Past Analyses</h2>
                 <button
                   onClick={clearAllAnalyses}
                   className="text-red-500 hover:text-red-700 flex items-center"
